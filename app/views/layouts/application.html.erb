@@ -10,6 +10,21 @@
   </head>
 
   <body>
+  <div>
+    <%= link_to "Home", root_path %><br>
+    <% if logged_in? %>
+      Logged in as <%= current_user.name %><br>
+      <%= link_to "Log Out", "/logout" %>
+    <% else %>
+      <%= link_to "Log in", "/login" %><br>
+      <%= link_to "Register", "/signup" %>
+    <% end %>
+  </div><br>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
     <%= yield %>
   </body>
 </html>
