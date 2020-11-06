@@ -1,4 +1,5 @@
 class CreatorsController < ApplicationController
+    before_action :clean_params, only: [:create, :update]
 
     def new
         @creator = Creator.new
@@ -49,5 +50,10 @@ class CreatorsController < ApplicationController
 
     def creator_params
         params.require(:creator).permit(:email, :name, :about, :password, :password_confirmation)
+    end
+
+    def clean_params
+        params[:creator][:name].titleize
+        params[:creator][:email].downcase
     end
 end

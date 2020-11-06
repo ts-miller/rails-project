@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :clean_params, only: [:create, :update]
+
+
     def show
         @user = User.find_by(params[:id])
     end
@@ -8,7 +11,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        params[:user][:email].downcase
         if !Creator.find_by(email: params[:user][:email]) 
             @user = User.new(user_params)
             if @user.save
@@ -27,7 +29,6 @@ class UsersController < ApplicationController
     end
 
     def update
-        params[:user][:email].downcase
         if !Creator.find_by(email: params[:user][:email])
             @user = User.find_by_id(params[:id])
             if @user.update(user_params)
@@ -48,5 +49,10 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    end
+
+    def clean_params
+        params[:user][:name].titleize
+        params[:user][:email].downcase
     end
 end
