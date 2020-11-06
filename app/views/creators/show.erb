@@ -1,0 +1,11 @@
+This is the show page for a creator.
+
+<h2><%= @creator.name %></h2>
+
+<%= button_to "Edit Creator", edit_creator_path(@creator), method: :get %>
+<%= button_to "Delete Creator", { controller: :creators, action: 'destroy', id: @creator.id }, method: :delete %><br>
+
+All tiers list if not pledged
+
+Posts if pledged
+

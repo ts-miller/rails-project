@@ -6,16 +6,19 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(email: params[:email])
+        @user = Creator.find_by(email: params[:email])
+        binding.pry
+        @user ||= User.find_by(email: params[:email])
         if @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            set_session(@user)
+            binding.pry
+            #@user.class == User ? redirect_to user_path(@user) : redirect_to creator_path(@user)            
         else
-            render 'new'
+            render 'sessions/new'
         end    
     end
 
-    def delete
+    def destroy
         reset_session
         redirect_to root_path
     end

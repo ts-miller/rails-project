@@ -2,3 +2,8 @@ This is the show page for a user.
 
 Hi <%= @user.name %><br>
 <%= @user.email %><br>
+
+<%= button_to "Edit User", edit_user_path(@user), method: :get %>
+<%= button_to "Delete User", { controller: :users, action: 'destroy', id: @user.id }, method: :delete %><br>
+
+List of every creator that user is subscribed to.

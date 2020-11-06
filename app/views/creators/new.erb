@@ -1,8 +1,8 @@
-New page for a user<br>
+New page for a Creator<br>
 
-<%= link_to "Creator Signup Here", new_creator_path %><br>
+<%= link_to "User Signup Here", "/signup" %><br>
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @creator do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, autocomplete: "name", required: true %><br>
     <%= f.label :email %>
