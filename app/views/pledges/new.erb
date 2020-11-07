@@ -1,0 +1,13 @@
+New Pledge Form<br><br>
+<h3>Current Pledge Amount: <%= @pledge.amount.blank? ? "No existing pledges" : @pledge.amount %></h3>
+<%= form_with model: @pledge do |f| %>
+    <%= f.hidden_field :user_id, value: @pledge.user_id %>
+    <%= f.hidden_field :creator_id, value: @pledge.creator_id %>
+    <%= f.label :amount, "What would you like to change it to?" %>
+    <%= f.number_field :amount, min: 1, value: @tier.amount.to_d %>
+    <%= f.submit %>
+<% end %>
+
+<h3><%= link_to @pledge.creator.name, creator_path(@pledge.creator) %> -
+<%= @tier.title %> - $<%= @tier.amount %><br><br></h3>
+<p><%= @tier.description %><br>

@@ -1,9 +1,14 @@
 This is the show page for a user.
 
 Hi <%= @user.name %><br>
-<%= @user.email %><br>
+<%= @user.email %><br><br>
+
+<% @user.pledges.each do |pledge| %>
+    <%= link_to pledge.creator.name, creator_path(pledges.creator) %>
+    $<%= pledge.amount %>
+    <%= link_to "Edit", edit_user_pledge(@user, pledge) %>
+<% end %>
 
 <%= button_to "Edit User", edit_user_path(@user), method: :get %>
 <%= button_to "Delete User", { controller: :users, action: 'destroy', id: @user.id }, method: :delete %><br>
 
-List of every creator that user is subscribed to.

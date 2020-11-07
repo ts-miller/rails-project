@@ -2,10 +2,25 @@ This is the show page for a creator.
 
 <h2><%= @creator.name %></h2>
 
-<%= button_to "Edit Creator", edit_creator_path(@creator), method: :get %>
-<%= button_to "Delete Creator", { controller: :creators, action: 'destroy', id: @creator.id }, method: :delete %><br>
+<%= link_to "Edit Creator", edit_creator_path(@creator) %><br>
+<%= link_to "Delete Creator", creator_path(@creator), data: { :confirm => 'Are you sure?' }, method: :delete %><br><br>
 
-All tiers list if not pledged
+#Link to New Post#<br>
+<%= link_to "New Tier", new_creator_tier_path(@creator) %><br><br>
 
-Posts if pledged
+<% @creator.tiers.order(:amount).each do |tier| %>
+    <div class="tier-box">
+    <%= tier.title %><br>
+    <%= tier.amount %><br>
+    <%= tier.description %><br>
+    <% if !logged_in? %>
+        <%= link_to "Join Tier A", '/login' %>
+    <% elsif @creator == current_user %>
+        <%= link_to "Edit Tier", edit_creator_tier_path(@creator, tier) %>
+        <%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete %>
+    <% else tier.amount <= Pledge.find_by(user_id: current_user.id, creator_id: @creator.id).amount %>
+        <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount) %>
+    <% end %>
+    </div><br>
+<% end %>
 

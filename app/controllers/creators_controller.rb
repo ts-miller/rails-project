@@ -1,12 +1,15 @@
 class CreatorsController < ApplicationController
     before_action :clean_params, only: [:create, :update]
 
+    def index
+        @creators = Creator.all
+    end
+
     def new
         @creator = Creator.new
     end
 
     def create
-        params[:creator][:email].downcase
         if !User.find_by(email: params[:creator][:email])
             @creator = Creator.new(creator_params)
             if @creator.save
@@ -26,10 +29,10 @@ class CreatorsController < ApplicationController
 
     def edit
         @creator = Creator.find_by_id(params[:id])
+        redirect_if_not_owner(@creator)
     end
 
     def update
-        params[:creator][:email].downcase
         if !User.find_by(email: params[:creator][:email])
             @creator = Creator.find_by_id(params[:id])
             if @creator.update(creator_params)
@@ -41,6 +44,7 @@ class CreatorsController < ApplicationController
 
     def destroy
         @creator = Creator.find_by_id(params[:id])
+        redirect_if_not_owner(@creator)
         reset_session
         @creator.destroy
         redirect_to '/'

@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  root 'home#home'
+  root 'creators#index'
   
-  resources :pledges
-  resources :creators, only: [:new, :create, :update, :destroy, :edit, :show]
-  resources :users, only: [:new, :create, :update, :destroy, :edit, :show]
-  resources :tiers, only: [:new, :create, :update, :destroy, :edit]
+  resources :creators, only: [:new, :create, :update, :destroy, :edit, :show] do
+    resources :tiers, only: [:new, :index, :edit]
+    resources :pledges, only: [:new, :index]
+  end
+
+  resources :users, only: [:new, :create, :update, :destroy, :edit, :show] do
+    resources :pledges, only: [:index, :edit, :show]
+  end
+
+  resources :tiers, only: [:create, :update, :destroy]
+  resources :pledges, only: [:create, :update, :destroy]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -1,0 +1,5 @@
+<h1>This is the Home page!</h1>
+
+<% @creators.each do |creator| %>
+    <%= link_to creator.name, creator_path(creator) %><br>
+<% end %>

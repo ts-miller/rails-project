@@ -1,0 +1,12 @@
+<%= form_with model: @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: "name", required: true %><br>
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", required: true %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password, required: true %><br>
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, required: true %><br>
+
+    <%= f.submit %>
+<% end %>

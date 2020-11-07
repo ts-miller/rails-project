@@ -30,4 +30,26 @@ class ApplicationController < ActionController::Base
             session[:user_id] = user.id
         end
     end
+
+    # def unique_in_other_class?(params)     Work on this later.
+    #     if user.class == User
+    #         Creator.find_by(email: )
+    # end
+
+    def redirect_if_not_owner(user)
+        if logged_in?
+            if user != current_user
+                redirect_to root_path
+            end
+        else
+            redirect_to '/login'
+        end
+    end
+
+    def redirect_if_not_logged_in
+        if !logged_in?
+            redirect_to '/login'
+        end
+    end
+
 end

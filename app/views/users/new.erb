@@ -2,17 +2,6 @@ New page for a user<br>
 
 <%= link_to "Creator Signup Here", new_creator_path %><br>
 
-<%= form_with model: @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, autocomplete: "name", required: true %><br>
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email", required: true %><br>
-    <%= f.label :password %>
-    <%= f.password_field :password, required: true %><br>
-    <%= f.label :password_confirmation, "Password Confirmation" %>
-    <%= f.password_field :password_confirmation, required: true %><br>
-
-    <%= f.submit %>
-<% end %>
+<%= render 'form' %>
 
 <%= button_to 'Register with Google', '/auth/google_oauth2' %><br>

@@ -4,9 +4,13 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(params[:id])
+        redirect_if_not_owner(@user)
     end
 
     def new
+        if logged_in?
+            redirect_to root_path
+        end
         @user = User.new
     end
 
@@ -26,6 +30,7 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find_by_id(params[:id])
+        redirect_if_not_owner(@user)
     end
 
     def update
@@ -40,6 +45,7 @@ class UsersController < ApplicationController
 
     def destroy
         @user = User.find_by_id(params[:id])
+        redirect_if_not_owner(@user)
         reset_session
         @user.destroy
         redirect_to '/'
