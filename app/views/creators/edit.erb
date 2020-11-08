@@ -1,1 +1,9 @@
-Edit a Creator
+Edit a Creator<br>
+<%= form_with model: @creator do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: "name", required: true %><br>
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", required: true %><br><br>
+
+    <%= f.submit %>
+<% end %>

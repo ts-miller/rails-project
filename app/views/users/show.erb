@@ -1,6 +1,4 @@
-This is the show page for a user.
-
-Hi <%= @user.name %><br>
+<h2>Hi <%= @user.name %></h2>
 <%= @user.email %><br><br>
 
 <% @user.pledges.each do |pledge| %>
@@ -9,6 +7,10 @@ Hi <%= @user.name %><br>
     <%= link_to "Edit", edit_user_pledge(@user, pledge) %>
 <% end %>
 
-<%= button_to "Edit User", edit_user_path(@user), method: :get %>
-<%= button_to "Delete User", { controller: :users, action: 'destroy', id: @user.id }, method: :delete %><br>
+<%= link_to "Edit User", edit_user_path(@user) %><br>
+<%= link_to "Delete User", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %><br>
+
+<% @user.creators.each do |creator| %>
+    <%= link_to creator.name, creator_path(creator) %>
+<% end %>
 

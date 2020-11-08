@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    helper_method :logged_in?, :current_user, :set_session
+    helper_method :logged_in?, :current_user, :set_session, :redirect_if_not_owner
 
 
     def logged_in?

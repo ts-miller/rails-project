@@ -1,5 +1,15 @@
 <h1>This is the Home page!</h1>
 
+<h4>Search by State:</h4>
+    <%= form_tag(root_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Search") %>
+    <% end %><br>
+
+<% if @creators.blank? %>
+    <h4>Sorry, no creators to display</h4>
+<% end %>
+
 <% @creators.each do |creator| %>
     <%= link_to creator.name, creator_path(creator) %><br>
 <% end %>

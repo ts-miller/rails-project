@@ -5,8 +5,8 @@
     </div>
     <% if current_user == @creator %>
         <div>
-            <%= link_to "Edit Creator", edit_creator_path(@creator) %><br>
-            <%= link_to "Delete Creator", creator_path(@creator), data: { :confirm => 'Are you sure?' }, method: :delete %><br><br>
+            <%= link_to "Edit Profile", edit_creator_path(@creator) %><br>
+            <%= link_to "Delete Profile", creator_path(@creator), data: { :confirm => 'Are you sure?' }, method: :delete %><br><br>
             #Link to New Post#<br>
             <%= link_to "New Tier", new_creator_tier_path(@creator) %><br><br>
         </div>
@@ -22,17 +22,28 @@
     <% @creator.tiers.order(:amount).each do |tier| %>
         <div class="tier-box">
             <%= tier.title %><br>
-            $<%= tier.amount %><br>
-            <%= tier.description %><br>
+            $<%= tier.amount %> per month<br>
+            
             <% if !logged_in? %>
-                <%= link_to "Join Tier A", '/login' %>
-            <% elsif @creator == current_user %>
-                <%= link_to "Edit Tier", edit_creator_tier_path(@creator, tier) %>
-                <%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete %>
-            <% else tier.amount <= Pledge.find_by(user_id: current_user.id, creator_id: @creator.id).amount %>
+                <%= link_to "Join Tier", '/login' %>
+            <% elsif current_user.class == Creator %>
+                <% if @creator == current_user %>
+                    <%= link_to "Edit Tier", edit_creator_tier_path(@creator, tier) %>
+                    <%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete %>
+                <% end %>
+            <% elsif current_user.creators.include?(@creator) %>
+                <% if current_user.pledge_amount(@creator) <= tier.amount %>
+                    <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount) %>
+                <% else %>
+                    <%= "Subscribed"%>
+                <% end %>
+            <% else %>
                 <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount) %>
-            <% end %>
+            <% end %><br>
+            <%= tier.description %><br>
         </div><br>
     <% end %>
+    <div>
+        <h1><%= @creator.pledges.count %> Patrons</h1>
+    </div>
 </div>
-

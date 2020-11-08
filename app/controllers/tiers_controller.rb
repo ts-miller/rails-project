@@ -2,7 +2,7 @@ class TiersController < ApplicationController
     before_action :clean_params, only: [:create, :update]
 
     def new
-        @creator = Creator.find(params[:creator_id])
+        @creator = Creator.find_id(id: params[:creator_id])
         redirect_if_not_owner(@creator)
         @tier = Tier.new
     end
@@ -18,14 +18,13 @@ class TiersController < ApplicationController
     end
 
     def edit
-        @creator = Creator.find_by(params[:creator_id])
-        @tier = Tier.find_by(params[:id])
+        @creator = Creator.find_by(id: params[:creator_id])
+        @tier = Tier.find_by(id: params[:id])
         redirect_if_not_owner(@creator)
-        
     end
 
     def update
-        @tier = Tier.find_by(params[:id])
+        @tier = Tier.find_by(id: params[:id])
         if @tier.update(tier_params)
             redirect_to creator_path(@tier.creator)
         else

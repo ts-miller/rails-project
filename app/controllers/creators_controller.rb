@@ -1,8 +1,12 @@
 class CreatorsController < ApplicationController
     before_action :clean_params, only: [:create, :update]
-
+    
     def index
-        @creators = Creator.all
+        if params[:search].blank?
+            @creators = Creator.all
+        else
+            @creators = Creator.state(params[:search])
+        end
     end
 
     def new
@@ -38,8 +42,9 @@ class CreatorsController < ApplicationController
             if @creator.update(creator_params)
                 redirect_to creator_path(@creator)
             end
+        else
+            render 'edit'
         end
-        render 'edit'
     end
 
     def destroy
