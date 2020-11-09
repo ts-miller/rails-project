@@ -2,17 +2,19 @@ New page for a Creator<br>
 
 <%= link_to "User Signup Here", "/signup" %><br>
 
-<%= form_with model: @creator do |f| %>
+<%= form_with model: @creator, local: true do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, autocomplete: "name", required: true %><br>
     <%= f.label :email %>
     <%= f.email_field :email, autocomplete: "email", required: true %><br>
+    <%= f.label :state %>
+    <%= f.collection_select :state, all_states, :second, :second %><br>
     <%= f.label :password %>
     <%= f.password_field :password, required: true %><br>
     <%= f.label :password_confirmation, "Password Confirmation" %>
     <%= f.password_field :password_confirmation, required: true %><br>
 
-    <%= f.submit %>
+<%= f.submit %>
 <% end %>
 
 <%= button_to 'Register with Google', '/auth/google_oauth2' %><br>

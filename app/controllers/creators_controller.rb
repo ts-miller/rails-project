@@ -58,7 +58,7 @@ class CreatorsController < ApplicationController
     private
 
     def creator_params
-        params.require(:creator).permit(:email, :name, :about, :password, :password_confirmation)
+        params.require(:creator).permit(:email, :name, :about, :password, :password_confirmation, :state)
     end
 
     def clean_params

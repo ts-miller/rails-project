@@ -1,12 +1,2 @@
 New Tier<br>
-<%= form_with model: @tier do |f| %>
-    <%= f.hidden_field :creator_id, :value => @creator.id %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
-    <%= f.label :amount, "Amount $" %>
-    <%= f.number_field :amount %><br>
-    <%= f.label :description %>
-    <%= f.text_area :description %><br>
-
-    <%= f.submit %>
-<% end %>
+<%= render 'form' %>

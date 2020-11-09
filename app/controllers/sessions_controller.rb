@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
     def new
+        @user = User.new
         if logged_in?
-            redirect_to root_path, notice: "Already logged in."
+            redirect_to root_path
         end
     end
 
@@ -12,6 +13,7 @@ class SessionsController < ApplicationController
             set_session(@user)
             redirect_to_show_page(@user)            
         else
+            flash.now[:notice] = "Wrong email or password. Try again."
             render 'sessions/new'
         end    
     end

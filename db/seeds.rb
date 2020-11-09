@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 creators = Creator.create([
-    { name: "The Holy Post", email: "holypost@gmail.com", password: "password", about: "We make podcasts about faith.", state: "Chicago" },
+    { name: "The Holy Post", email: "holypost@gmail.com", password: "password", about: "We make podcasts about faith.", state: "Illinois" },
     { name: "Colins Last Stand", email: "colinslaststand@gmail.com", password: "password", about: "We make video game stuff.", state: "Virginia" },
     { name: "Tronics Fix", email: "tronicsfix@gmail.com", password: "password", about: "I make repair vidoes.", state: "Washington" }
 ])

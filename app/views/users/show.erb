@@ -1,16 +1,13 @@
 <h2>Hi <%= @user.name %></h2>
-<%= @user.email %><br><br>
+<%= @user.email %><br>
 
+<h3><%= link_to "Edit User", edit_user_path(@user) %> || 
+<%= link_to "Delete User", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></h3>
+
+<h4>Currently Supporting</h4>
 <% @user.pledges.each do |pledge| %>
-    <%= link_to pledge.creator.name, creator_path(pledges.creator) %>
-    $<%= pledge.amount %>
-    <%= link_to "Edit", edit_user_pledge(@user, pledge) %>
+    <%= link_to pledge.creator.name, creator_path(pledge.creator) %><br>
+    $<%= pledge.amount %> ||
+    <%= link_to "Delete", user_pledge_path(@user, pledge), data: { confirm: "Are you sure?" }, method: :delete %><br>
+    <%= pledge.to_tier.description %>
 <% end %>
-
-<%= link_to "Edit User", edit_user_path(@user) %><br>
-<%= link_to "Delete User", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %><br>
-
-<% @user.creators.each do |creator| %>
-    <%= link_to creator.name, creator_path(creator) %>
-<% end %>
-

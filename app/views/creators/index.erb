@@ -1,8 +1,9 @@
 <h1>This is the Home page!</h1>
 
+
 <h4>Search by State:</h4>
     <%= form_tag(root_path, method: :get) do %>
-        <%= text_field_tag(:search, params[:search]) %>
+        <%= select_tag :search, options_from_collection_for_select(all_states, :second, :second) %>
         <%= submit_tag ("Search") %>
     <% end %><br>
 
@@ -11,5 +12,7 @@
 <% end %>
 
 <% @creators.each do |creator| %>
-    <%= link_to creator.name, creator_path(creator) %><br>
+    <%= link_to creator.name, creator_path(creator) %> - 
+    <%= creator.pledges.count %> Patrons || State: 
+    <%= creator.state %><br>
 <% end %>
