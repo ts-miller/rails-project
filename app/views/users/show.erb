@@ -1,4 +1,4 @@
-<h2>Hi <%= @user.name %></h2>
+<h2>Hi, <%= @user.name %></h2>
 <%= @user.email %><br>
 
 <h3><%= link_to "Edit Account", edit_user_path(@user) %> || 
@@ -12,9 +12,9 @@
     <% @user.pledges.each do |pledge| %>
         <div class="creator-box">
             <%= link_to pledge.creator.name, creator_path(pledge.creator), class: "button" %>
-            $<%= pledge.amount %> ||
-            <%= link_to "Delete", pledge_path(pledge), data: { confirm: "Are you sure?" }, method: :delete, class: "norm-link" %><br>
+            <div class="field-space">$<%= pledge.amount.to_i %> per month</div>
             <p class="field-space"><%= pledge.to_tier.description %></p>
+            <%= link_to "Delete", pledge_path(pledge), data: { confirm: "Are you sure?" }, method: :delete, class: "norm-link bottom" %>
         </div>
     <% end %>
 </div>

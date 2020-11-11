@@ -1,11 +1,14 @@
-Edit a Creator<br>
+<h1 class="center">Edit a Creator</h1>
 
 <%= form_with model: @creator, local: true do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name, autocomplete: "name", required: true %><br>
+    <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %><br>
     <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email", required: true %><br>
-    <%= f.submit %>
+    <%= f.email_field :email, autocomplete: "email", required: true, class: "field-space" %><br>
     <%= f.label :state %>
-    <%= f.collection_select :state, all_states, :second, :second %><br>
+    <%= f.collection_select :state, all_states, :second, :second, class: "field-space" %><br>
+    <%= f.label :about, class: "desc-label" %>
+    <%= f.text_area :about, required: true, rows: 10, cols: 40, class: "field-space" %>
+
+    <%= f.submit class: "button" %>
 <% end %>

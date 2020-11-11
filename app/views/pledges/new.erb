@@ -1,19 +1,18 @@
-<div class="center">
-    <h3>Would you like to confirm this subscribing at this Tier?</h3>
-</div><br>
 
-<div class="tier-box, center">
-    <div class="blue-button">
+<h3 class="center">Would you like to confirm this subscribing at this Tier?</h3>
+
+<div class="creator-box center">
+    <div class="center">
         <h3><%= link_to @pledge.creator.name, creator_path(@pledge.creator) %> -
         <%= @tier.title %><br>
         $<%= @tier.amount %> per month</h3>
+        <%= @tier.description %>
     </div>
-    <p><%= @tier.description %><br>
-    <%= form_with model: @pledge do |f| %>
+    <%= form_with model: @pledge, class: "bottom" do |f| %>
         <%= f.hidden_field :user_id, value: @pledge.user_id %>
         <%= f.hidden_field :creator_id, value: @pledge.creator_id %>
         <%= f.hidden_field :amount, value: @tier.amount.to_d %>
-        <%= f.submit "Yes, Subscribe" %>
+        <%= f.submit "Yes, Subscribe", class: "button center" %>
     <% end %>
 </div>
 

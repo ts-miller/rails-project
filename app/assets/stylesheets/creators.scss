@@ -72,6 +72,7 @@ form {
 
 .creator-box {
     min-height: 250px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     padding: 30px 20px 20px;
@@ -116,10 +117,9 @@ form {
 
 .tier-box {
     margin: 1rem;
-    // border-width: 1px;
-    // border-style: solid;
-    // border-color: black;
-    // border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
 }
 
 .session-buttons {
@@ -133,10 +133,9 @@ form {
 }
 
 .center {
-    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 70%;
     text-align: center;
 }
 
@@ -210,7 +209,7 @@ footer.branding {
     font-size: 18px;
     font-weight: bold;
     color: white;
-    display: block;
+    display: inline-block;
     text-align: center;
     max-width: 250px;
     min-width: 100px;
@@ -226,12 +225,15 @@ footer.branding {
 }
 
 .non-button {
+    display: inline-block;
     background-color: grey;
     color: white;
     border: none;
     padding: 15px 32px;
     font-weight: bold;
     border-radius: 29px;
+    max-width: 250px;
+    min-width: 100px;
 }
 
 .field-space {
@@ -247,6 +249,12 @@ footer.branding {
     margin-top: 8px;
 }
 
+.desc-label {
+    margin-top: 10px;
+    float: left;
+    margin-right: 10px;
+}
+
 .title-heading {
     font-size: 25px;
     margin-bottom: 10px;
@@ -257,14 +265,17 @@ footer.branding {
     font-weight: bold;
 }
 
+.bottom {
+    margin-top: auto;
+}
+
 .pledge-amount {
     line-height: 38px;
-    float: left;
     margin-left: 5rem;
     margin-right: 1rem;
     background-color: lightgray;
     padding: 10px;
-    display: block;
+    display: inline-flex;
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -275,6 +286,12 @@ footer.branding {
 .pledge-box {
     height: 60px;
     line-height: 58px;
+    display: contents;
+}
+
+.pledge {
+    list-style-type: none;
+    margin-bottom: 10px;
 }
 
 .white-text {
