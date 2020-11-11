@@ -6,4 +6,6 @@ Edit a Creator<br>
     <%= f.label :email %>
     <%= f.email_field :email, autocomplete: "email", required: true %><br>
     <%= f.submit %>
+    <%= f.label :state %>
+    <%= f.collection_select :state, all_states, :second, :second %><br>
 <% end %>

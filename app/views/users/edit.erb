@@ -1,3 +1,20 @@
-Edit a user
+<h1>Edit Account</h1>
 
-<%= render 'form' %>
+<%= render 'errors' %>
+
+<%= form_with model: @user, local: true do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %>
+    </div>
+    <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", required: true, class: "field-space" %>
+    </div>
+    <div>
+        <%= f.label :privacy, "Would you like your support to be private?" %>
+        <%= f.check_box :privacy, class: "field-space" %>
+    </div>
+
+    <%= f.submit class: "button" %>
+<% end %>

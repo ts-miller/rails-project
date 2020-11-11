@@ -1,20 +1,22 @@
-New page for a Creator<br>
 
-<%= link_to "User Signup Here", "/signup" %><br>
+<div class="signup-header">
+    <h1 class="title-header">New Creator Signup</h1>
+    <%= link_to "User Signup Here", new_user_path, class: "button" %>
+</div>
 
 <%= form_with model: @creator, local: true do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name, autocomplete: "name", required: true %><br>
+    <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %><br>
     <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email", required: true %><br>
+    <%= f.email_field :email, autocomplete: "email", required: true, class: "field-space" %><br>
     <%= f.label :state %>
-    <%= f.collection_select :state, all_states, :second, :second %><br>
+    <%= f.collection_select :state, all_states, :second, :second, class: "field-space" %><br>
     <%= f.label :password %>
-    <%= f.password_field :password, required: true %><br>
+    <%= f.password_field :password, required: true, class: "field-space" %><br>
     <%= f.label :password_confirmation, "Password Confirmation" %>
-    <%= f.password_field :password_confirmation, required: true %><br>
+    <%= f.password_field :password_confirmation, required: true, class: "field-space" %><br>
 
-<%= f.submit %>
+<%= f.submit class: "button" %>
 <% end %>
 
-<%= button_to 'Register with Google', '/auth/google_oauth2' %><br>
+<%#= button_to 'Signup with Google', '/auth/google_oauth2', class: "button" %>

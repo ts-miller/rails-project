@@ -1,49 +1,58 @@
 <div>
-    <div>
+    <div class="center">
         <h3><%= @creator.name %></h3>
         <p><%= @creator.about %></p>
     </div>
+    <div class="center">
     <% if current_user == @creator %>
-        <div>
-            <%= link_to "Edit Profile", edit_creator_path(@creator) %><br>
-            <%= link_to "Delete Profile", creator_path(@creator), data: { :confirm => 'Are you sure?' }, method: :delete %><br><br>
-            #Link to New Post#<br>
-            <%= link_to "New Tier", new_creator_tier_path(@creator) %><br><br>
+            <div class="field-space">
+                <%= link_to "Edit Profile", edit_creator_path(@creator), class: "norm-link" %> || 
+                <%= link_to "Delete Profile", creator_path(@creator), data: { :confirm => 'Are you sure?' }, method: :delete, class: "norm-link" %><br><br>
+            </div>
+            <%= link_to "New Post", creator_path(@creator), class: "button field-space center" %>
+            <%= link_to "New Tier", new_creator_tier_path(@creator), class: "button center" %>
         </div>
-        <div>
+        <div class="center">
             <h1>Your Current Membership Levels</h1>
-        </div>
     <% else %>
-        <div>
             <h1>Select a Membership Level</h1>
-        </div>
     <% end %>
-    
+    </div>
+    <div class="display-box">
     <% @creator.tiers.order(:amount).each do |tier| %>
         <div class="tier-box">
-            <%= tier.title %><br>
+            <div class="title-heading"><%= tier.title %></div>
             $<%= tier.amount %> per month<br>
-            
+            <div class="field-space"><%= tier.description %></div>
             <% if !logged_in? %>
-                <%= link_to "Join Tier", '/login' %>
+                <%= link_to "Join Tier", '/login', class: "button" %>
             <% elsif current_user.class == Creator %>
                 <% if @creator == current_user %>
-                    <%= link_to "Edit Tier", edit_creator_tier_path(@creator, tier) %>
-                    <%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete %>
+                    <%= link_to "Edit Tier", edit_creator_tier_path(@creator, tier), class: "button" %></div> 
+                    <div class="button-div"><%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete, class: "button" %>
                 <% end %>
             <% elsif current_user.creators.include?(@creator) %>
-                <% if current_user.pledge_amount(@creator) <= tier.amount %>
-                    <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount) %>
+                <% if current_user.pledge_amount(@creator) < tier.amount %>
+                    <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button" %>
                 <% else %>
-                    <%= "Subscribed"%>
+                    <div class="non-button"><%= "Subscribed"%></div>
                 <% end %>
             <% else %>
-                <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount) %>
+                <%= link_to "Join Tier", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button" %>
             <% end %><br>
-            <%= tier.description %><br>
-        </div><br>
+        </div>
     <% end %>
-    <div>
-        <h1><%= @creator.pledges.count %> Patrons</h1>
+    </div>
+    <div class="center">
+        <h1 class="center"><%= @creator.pledges.count %> Patrons</h1>
+    </div>
+    <div class="pledge-box">
+        <% if @creator.pledges.any? %>
+            <% @creator.pledges.each do |pledge| %>
+            <% binding.pry %>
+                <div class="pledge-amount">$<%= pledge.amount %></div> 
+                <%= (pledge.user.privacy ? " Anonymous" : pledge.user.name) %>
+            <% end %>
+        <% end %>
     </div>
 </div>

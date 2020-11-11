@@ -1,10 +1,16 @@
-Login below!<br><br>
+<h1>Login below</h1>
+
+<%= render 'errors' %>
 
 <%= form_with url: "/login", local: true do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %><br>
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
+    <div class="field-space">
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true %>
+    </div>
+    <div class="field-space">
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true %>
+    </div>
 
-    <%= f.submit "Log In" %>
+    <%= f.submit "Log In", class: "button" %>
 <% end %>

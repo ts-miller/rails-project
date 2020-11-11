@@ -1,13 +1,20 @@
 <h2>Hi <%= @user.name %></h2>
 <%= @user.email %><br>
 
-<h3><%= link_to "Edit User", edit_user_path(@user) %> || 
-<%= link_to "Delete User", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></h3>
+<h3><%= link_to "Edit Account", edit_user_path(@user) %> || 
+<%= link_to "Delete Account", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></h3>
 
-<h4>Currently Supporting</h4>
-<% @user.pledges.each do |pledge| %>
-    <%= link_to pledge.creator.name, creator_path(pledge.creator) %><br>
-    $<%= pledge.amount %> ||
-    <%= link_to "Delete", user_pledge_path(@user, pledge), data: { confirm: "Are you sure?" }, method: :delete %><br>
-    <%= pledge.to_tier.description %>
-<% end %>
+<div class="center">
+    <h1>Currently Supporting</h1>
+</div>
+
+<div class="display-box">
+    <% @user.pledges.each do |pledge| %>
+        <div class="creator-box">
+            <%= link_to pledge.creator.name, creator_path(pledge.creator), class: "button" %>
+            $<%= pledge.amount %> ||
+            <%= link_to "Delete", pledge_path(pledge), data: { confirm: "Are you sure?" }, method: :delete, class: "norm-link" %><br>
+            <p class="field-space"><%= pledge.to_tier.description %></p>
+        </div>
+    <% end %>
+</div>

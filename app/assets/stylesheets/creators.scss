@@ -1,3 +1,291 @@
 // Place all the styles related to the Creators controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+html, body {
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(28,31,54,1) 58%, rgba(81,92,158,1) 100%);
+    background-attachment: fixed;
+    color: #333;
+}
+
+.wrapper {
+    background: #fff;
+    -mox-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 54px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    // position: fixed;
+    width: 100%;
+}
+
+form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.name-container {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.pledges-container {
+
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.display-box {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    text-align: center;
+    justify-content: space-evenly;
+    gap: 20px 20px;
+}
+
+.creator-box {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 20px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+}
+
+.signup-header {
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .display-box {
+        grid-template-columns: 40% 40%;
+    }
+
+    .button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 650px) {
+    .display-box {
+        grid-template-columns: 75%;
+    }
+
+
+}
+
+.blue-button {
+    background-color: rgb(38,93,171);
+    padding: 15px;
+    border-radius: 30px;
+    color: white;
+}
+
+.layout-icons {
+    display: grid;
+
+}
+
+.tier-box {
+    margin: 1rem;
+    // border-width: 1px;
+    // border-style: solid;
+    // border-color: black;
+    // border-radius: 4px;
+}
+
+.session-buttons {
+    text-align: right;
+}
+
+.norm-link {
+    text-decoration: underline;
+    font-weight: bold;
+    color: rgb(10, 10, 104);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: center;
+}
+
+.branding {
+    clear: both;
+}
+
+footer.branding {
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+    padding-top: 20px
+}
+
+.home-link {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(255, 51, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    float: left;
+    width: 142px;
+    border-bottom: 7px solid #2d566d;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.title-header {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 20px;
+}
+
+#main {
+    margin-top: 40px;
+}
+
+#mic-img {
+    width: 200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+#home-container {
+    width: 70%;
+    margin: auto;
+}
+
+#home-descriptor {
+}
+
+.alert-box {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    display: block;
+    font-size: 0.72222rem;
+    font-weight: normal;
+    margin-bottom: 1.11111rem;
+    padding: 0.77778rem 1.33333rem 0.77778rem 0.77778rem;
+    position: relative;
+    transition: opacity 300ms ease-out;
+    background-color: #c72222;
+    border-color: #801717;
+    color: #FFFFFF;
+}
+
+.button {
+    background-color: rgb(38,93,171);
+    border: none;
+    border-radius: 29px;
+    padding: 15px 32px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    display: block;
+    text-align: center;
+    max-width: 250px;
+    min-width: 100px;
+}
+
+.button:hover {
+    background-color: rgb(18,71,146);
+    transition: 0.5s;
+}
+
+.button-div {
+    text-align: center;
+}
+
+.non-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    font-weight: bold;
+    border-radius: 29px;
+}
+
+.field-space {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.state-name-container {
+    margin-top: 10px;
+}
+
+.creator-about-container {
+    margin-top: 8px;
+}
+
+.title-heading {
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.pledge-amount {
+    line-height: 38px;
+    float: left;
+    margin-left: 5rem;
+    margin-right: 1rem;
+    background-color: lightgray;
+    padding: 10px;
+    display: block;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    text-align: center;
+}
+
+.pledge-box {
+    height: 60px;
+    line-height: 58px;
+}
+
+.white-text {
+    color: white;
+}
+
+.image-cropper  {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}

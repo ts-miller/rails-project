@@ -1,18 +1,36 @@
-<h1>This is the Home page!</h1>
+<h1 class="center separation-line">Welcome to Faketreon</h1>
 
+<div id="home-container">
+    <div id="home-descriptor">
+        <p class="center">We are a platform built for creators, by creators. 
+        We allow makers of all kinds to share their work with their audience and 
+        provide a means to be supported financially by the fans themselves.</p>
+        <p class="center">Connect with your favorite artists, podcasters, and makers
+        in a dynamic way and stay up to date by getting rewards for support.</p>
+    </div>
+    <div class="image-cropper">
+        <%= image_tag('microphone.jpg', id: "mic-img") %>
+    </div>
+</div>
 
-<h4>Search by State:</h4>
+<h4>Filter by State: 
     <%= form_tag(root_path, method: :get) do %>
         <%= select_tag :search, options_from_collection_for_select(all_states, :second, :second) %>
-        <%= submit_tag ("Search") %>
-    <% end %><br>
+        <%= submit_tag ("Filter") %>
+    <% end %>
+</h4>
 
 <% if @creators.blank? %>
     <h4>Sorry, no creators to display</h4>
 <% end %>
 
+<div class="display-box">
 <% @creators.each do |creator| %>
-    <%= link_to creator.name, creator_path(creator) %> - 
-    <%= creator.pledges.count %> Patrons || State: 
-    <%= creator.state %><br>
+    <div class="creator-box">
+        <div class="button-div"><%= link_to creator.name, creator_path(creator), class: "button" %></div>
+        <div class="state-name-container bold"><%= creator.state %></div>
+        <div class="creator-about-container"><%= creator.about %></div>
+        <div class="pledges-container"><%= creator.pledges.count %> Patrons</div>
+    </div>
 <% end %>
+</div>

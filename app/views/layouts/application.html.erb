@@ -10,24 +10,26 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to "Home", root_path %><br><br>
+  <div class="wrapper">
+    <header>
+      <%= link_to "Faketreon", root_path, class: "home-link" %>
       <% if logged_in? %>
-        Logged in as <%= current_user.class %>: 
-        <%= link_to current_user.name, correct_user_path(current_user) %><br>
-        <%= link_to "Log Out", "/logout" %>
+        <div class="session-buttons">Logged in as 
+        <%= link_to current_user.name, correct_user_path(current_user), class: "norm-link" %> || 
+        <%= link_to "Log Out", "/logout", class: "norm-link" %></div>
       <% else %>
-        <%= link_to "Log in", "/login" %><br>
-        <%= link_to "Register", new_user_path %>
+        <div class="session-buttons" ><%= link_to "Log in", "/login", class: "norm-link" %> || 
+        <%= link_to "Register", new_user_path, class: "norm-link" %></div>
       <% end %>
-    </div><br>
+    </header>
 
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div>
-    <% end %>
+    <div id="main">
 
-    <%= yield %>
+    <%= yield %><br>
+    <footer class="branding">
+      <small>&copy; Tyler Miller // 2020 <strong></small>
+    </footer>
+    </div>
+  </div>
   </body>
 </html>

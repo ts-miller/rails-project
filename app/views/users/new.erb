@@ -1,7 +1,23 @@
-New page for a user<br>
+<div class="signup-header">
+    <h1 class="title-header">New User Signup</h1>
+    <%= link_to "Creator Signup Here", new_creator_path, class: "button" %>
+</div>
 
-<%= link_to "Creator Signup Here", new_creator_path %><br>
+<%= render 'errors' %>
 
-<%= render 'form' %>
+<%= form_with model: @user, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %><br>
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", required: true, class: "field-space" %><br>
+    <%= f.label :privacy, "Would you like your support to be private?" %>
+    <%= f.check_box :privacy %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password, required: true, class: "field-space" %><br>
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, required: true, class: "field-space" %><br>
 
-<%= button_to 'Register with Google', '/auth/google_oauth2' %><br>
+    <%= f.submit class: "button" %>
+<% end %>
+
+<%= button_to 'Signup with Google', '/auth/google_oauth2', class: "button" %><br>

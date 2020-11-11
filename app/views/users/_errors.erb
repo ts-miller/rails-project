@@ -1,0 +1,7 @@
+<% if @user.errors.any? %>
+    <ul>
+        <% @user.errors.messages.each do |msg| %>
+            <li class="alert-box"><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>

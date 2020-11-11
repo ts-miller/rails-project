@@ -38,6 +38,12 @@ class PledgesController < ApplicationController
         end
     end
 
+    def destroy
+        pledge = Pledge.find_by_id(params[:id])
+        pledge.destroy
+        redirect_to user_path(pledge.user)
+    end
+
     private
 
     def pledge_params

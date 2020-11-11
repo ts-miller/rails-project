@@ -2,13 +2,12 @@ class TiersController < ApplicationController
     before_action :clean_params, only: [:create, :update]
 
     def new
-        @creator = Creator.find_id(id: params[:creator_id])
+        @creator = Creator.find_by_id(params[:creator_id])
         redirect_if_not_owner(@creator)
         @tier = Tier.new
     end
 
     def create
-        binding.pry
         @tier = Tier.new(tier_params)
         if @tier.save
             redirect_to creator_path(@tier.creator)

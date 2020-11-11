@@ -39,14 +39,16 @@ class UsersController < ApplicationController
             if @user.update(user_params)
                 redirect_to user_path(@user)
             end
+        else
+            render 'edit'
         end
-        render 'edit'
     end
 
     def destroy
         @user = User.find_by_id(params[:id])
         redirect_if_not_owner(@user)
         reset_session
+        @user.pledges.destroy_all
         @user.destroy
         redirect_to '/'
     end
@@ -54,7 +56,8 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :name, :password, :password_confirmation)
+
+        params.require(:user).permit(:email, :name, :privacy, :password, :password_confirmation)
     end
 
     def clean_params

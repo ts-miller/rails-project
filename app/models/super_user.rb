@@ -2,8 +2,8 @@ class SuperUser < ApplicationRecord
     self.abstract_class = true
     validates :name, :email, presence: true
     validates :name, length: { minimum: 2 }
+    validates :password, length: { in: 6..20 }, on: :create
     validates_confirmation_of :password
-    validates :password, length: { in: 6..20 }
     has_secure_password
     validates :email, uniqueness: { case_sensitive: false }
 
