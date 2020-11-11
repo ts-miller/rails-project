@@ -52,7 +52,7 @@
         <% if @creator.pledges.any? %>
             <% @creator.pledges.each do |pledge| %>
                 <li class="pledge">
-                    <div class="pledge-amount">$<%= pledge.amount %></div>
+                    <div class="pledge-amount">$<%= pledge.amount.to_i %></div>
                     <%= (pledge.user.privacy ? " Anonymous" : pledge.user.name) %>
                 </li>
             <% end %>

@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(28,31,54,1) 58%, rgba(81,92,158,1) 100%);
+    background: linear-gradient(180deg, #000000 0%, #2e4667 58%, #265DAB 100%);
     background-attachment: fixed;
     color: #333;
 }
@@ -280,7 +280,7 @@ footer.branding {
     height: 40px;
     width: 40px;
     position: relative;
-    text-align: center;
+    justify-content: center;
 }
 
 .pledge-box {
