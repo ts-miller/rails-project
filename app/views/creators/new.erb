@@ -10,9 +10,11 @@
     <%= f.label :email %>
     <%= f.email_field :email, autocomplete: "email", required: true, class: "field-space" %><br>
     <%= f.label :state %>
-    <%= f.label :about, class: "desc-label" %>
-    <%= f.text_area :about, required: true, rows: 10, cols: 40, class: "field-space" %>
     <%= f.collection_select :state, all_states, :second, :second, class: "field-space" %><br>
+    <%= f.label :about, class: "desc-label" %>
+    <%= f.text_area :about, required: true, rows: 10, cols: 40, class: "field-space" %><br>
+    <%= f.label :profile_pic, "Profile Picture URL" %>
+    <%= f.text_field :profile_pic, class: "field-space" %><br>
     <%= f.label :password %>
     <%= f.password_field :password, required: true, class: "field-space" %><br>
     <%= f.label :password_confirmation, "Password Confirmation" %>

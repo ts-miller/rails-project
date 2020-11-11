@@ -5,12 +5,13 @@ html, body {
     font-family: sans-serif;
     height: 100%;
     width: 100%;
+    letter-spacing: 0.3px;
 }
 
 body {
     background: linear-gradient(180deg, #000000 0%, #2e4667 58%, #265DAB 100%);
     background-attachment: fixed;
-    color: #333;
+    color: rgb(36, 30, 18);
 }
 
 .wrapper {
@@ -135,8 +136,11 @@ form {
 .center {
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
     text-align: center;
+}
+
+.slim {
+    max-width: 40%;
 }
 
 .branding {
@@ -247,6 +251,7 @@ footer.branding {
 
 .creator-about-container {
     margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .desc-label {

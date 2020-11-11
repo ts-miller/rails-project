@@ -3,10 +3,10 @@
 
 <div class="creator-box center">
     <div class="center">
-        <h3><%= link_to @pledge.creator.name, creator_path(@pledge.creator) %> -
-        <%= @tier.title %><br>
-        $<%= @tier.amount %> per month</h3>
-        <%= @tier.description %>
+        <div class="title-heading"><%= link_to @pledge.creator.name, creator_path(@pledge.creator) %></div>
+        <div class="field-space"><%= @tier.title %></div>
+        <strong>$<%= @tier.amount %> per month</strong>
+        <div class="field-space"><%= @tier.description %></div>
     </div>
     <%= form_with model: @pledge, class: "bottom" do |f| %>
         <%= f.hidden_field :user_id, value: @pledge.user_id %>
@@ -15,5 +15,3 @@
         <%= f.submit "Yes, Subscribe", class: "button center" %>
     <% end %>
 </div>
-
-

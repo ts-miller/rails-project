@@ -1,8 +1,9 @@
-<h2>Hi, <%= @user.name %></h2>
-<%= @user.email %><br>
-
-<h3><%= link_to "Edit Account", edit_user_path(@user) %> || 
-<%= link_to "Delete Account", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></h3>
+<div class="center">
+    <h2>Hi, <%= @user.name %></h2>
+    <%= @user.email %><br>
+    <h3><%= link_to "Edit Account", edit_user_path(@user) %> || 
+    <%= link_to "Delete Account", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></h3>
+</div>
 
 <div class="center">
     <h1>Currently Supporting</h1>

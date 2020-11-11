@@ -1,7 +1,14 @@
 <div>
-    <div class="center">
+    <div class="center slim">
+        <div class="image-cropper">
+            <% if @creator.profile_pic.blank? %>
+                <%= image_tag('default-pic.png', id: "mic-img") %>
+            <% else %>
+                <%= image_tag(@creator.profile_pic, id: "mic-img") %>
+            <% end %>
+        </div>
         <h3><%= @creator.name %></h3>
-        <p><%= @creator.about %></p>
+        <p width="50%"><%= @creator.about %></p>
     </div>
     <div class="center">
     <% if current_user == @creator %>
@@ -22,7 +29,7 @@
     <% @creator.tiers.order(:amount).each do |tier| %>
         <div class="creator-box">
             <div class="title-heading"><%= tier.title %></div>
-            $<%= tier.amount %> per month<br>
+            <strong>$<%= tier.amount %> per month</strong>
             <div class="field-space"><%= tier.description %></div>
             <div class="bottom">
             <% if !logged_in? %>
