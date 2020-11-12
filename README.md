@@ -17,7 +17,7 @@ to specific tiers as we as potentially a direct messaging and commenting system.
 <h2>Usage</h2>
 <ul>
     <li>Type '$ Rails s' in your terminal to start a server running Faketreon
-        on your local machine</li>
+        on your local machine.</li>
     <li>Open your preferred web browser and navigate to localhost:3000</li>
     <li>You should be greeted by the Faketreon landing page and can navigate
         to various creators which can be filtered by state or create a User
@@ -25,6 +25,14 @@ to specific tiers as we as potentially a direct messaging and commenting system.
     <li>To stop the server and exit, press CTRL + C in your terminal.</li>
     <li>Have fun!</li>
 </ul>
+
+<h2>Clearing the Database</h2>
+<ul>
+    <li>In the folder 'db' delete the development.sqlite3 file.</li>
+    <li>In the terminal type '$ rails db:migrate.</li>
+    <li>This runs all migrations and generates a new sqlite3 file.</li>
+</ul>
+
 
 <h3>Contributing</h3>
 <p>Bug reports and pull requests are welcome on GitHub at 
