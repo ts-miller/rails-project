@@ -57,4 +57,12 @@ module CreatorsHelper
                 ["WV", "West Virginia"], 
                 ["WY", "Wyoming"] ]
     end
+
+    def creator_pic(creator)
+        if creator.profile_pic.blank?
+            image_tag('default-pic.png', id: "mic-img")
+        else
+            image_tag(creator.profile_pic, id: "mic-img")
+        end
+    end
 end
