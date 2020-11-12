@@ -1,6 +1,10 @@
 class TiersController < ApplicationController
     before_action :clean_params, only: [:create, :update]
 
+    def show
+        @tiers = Tier.most_expensive_9
+    end
+    
     def new
         @creator = Creator.find_by_id(params[:creator_id])
         redirect_if_not_owner(@creator)

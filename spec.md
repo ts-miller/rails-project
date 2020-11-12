@@ -1,0 +1,51 @@
+# Specifications for the Rails Assessment
+
+Specs:
+- [x] Using Ruby on Rails for the project
+    - Generated project using rails new
+- [x] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) 
+    - Creator has_many tiers
+- [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+    - Tier belongs_to Creator
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+    - User has_many :creators, through: :pledges
+- [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
+    - User
+        - has_many :Creators through pledges
+    -Creators
+        - has_many :Users through pledges
+- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+    - Pledges have the attribute of amount.
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+    - User & Creator
+        - validates :name, :email, presence: true
+        - validates :name, length: { minimum: 2 }
+        - validates :password, length: { in: 6..20 }, on: :create
+        - validates_confirmation_of :password
+        - validates :email, uniqueness: { case_sensitive: false }
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+    - Tier.most_expensive_9 URL:/tiers/most_expensive_9
+        -  scope :most_expensive_9, -> { reorder(amount: :desc) }
+- [x] Include signup
+    - /user/new
+- [x] Include login
+    - /login
+- [x] Include logout
+    - /logout
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+    - Implemented through OmniAuth
+    - CallbacksController < ApplicationController
+    - User Model
+        - SuperUser.from_omniauth(auth)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+    - users/2/pledges
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+    - /users/pledges/new, /creators/tiers/new
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+    - /users/new
+
+Confirm:
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [ ] Views use helper methods if appropriate
+- [x] Views use partials if appropriate

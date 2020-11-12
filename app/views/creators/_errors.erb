@@ -1,0 +1,7 @@
+<% if @creator.errors.any? %>
+    <ul>
+        <% @creator.errors.messages.each do |msg| %>
+            <li class="alert-box"><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>

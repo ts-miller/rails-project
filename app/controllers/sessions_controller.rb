@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         @user ||= User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
             set_session(@user)
-            redirect_to_show_page(@user)            
+            redirect_to_show_page(@user)
         else
             flash.now[:notice] = "Wrong email or password. Try again."
             render 'sessions/new'
@@ -27,9 +27,9 @@ class SessionsController < ApplicationController
 
     def redirect_to_show_page(user)
         if user.class == User
-            redirect_to user_path(user)
+            redirect_to user_pledges_path(user)
         else
-            redirect_to creator_path(@user)
+            redirect_to creator_path(user)
         end
     end
 end

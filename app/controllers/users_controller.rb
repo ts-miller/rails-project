@@ -19,7 +19,7 @@ class UsersController < ApplicationController
             @user = User.new(user_params)
             if @user.save
                 set_session(@user)
-                redirect_to user_path(@user)
+                redirect_to user_pledges_path(@user)
             else
                 render 'new'
             end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         if !Creator.find_by(email: params[:user][:email])
             @user = User.find_by_id(params[:id])
             if @user.update(user_params)
-                redirect_to user_path(@user)
+                redirect_to user_pledges_path(@user)
             end
         else
             render 'edit'

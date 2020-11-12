@@ -1,5 +1,7 @@
 <h1 class="center">Edit a Creator</h1>
 
+<%= render 'errors' %>
+
 <%= form_with model: @creator, local: true do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %><br>

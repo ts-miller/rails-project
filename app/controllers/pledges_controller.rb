@@ -1,5 +1,10 @@
 class PledgesController < ApplicationController
 
+    def index
+        @user = User.find_by_id(params[:user_id])
+        redirect_if_not_owner(@user)
+    end
+
     def new
         redirect_if_not_logged_in
         if current_user.class != Creator
@@ -24,10 +29,6 @@ class PledgesController < ApplicationController
         end
     end
 
-    def edit
-        
-    end
-
     def update
         @pledge = Pledge.find_by(id: params[:id])
 
@@ -41,7 +42,7 @@ class PledgesController < ApplicationController
     def destroy
         pledge = Pledge.find_by_id(params[:id])
         pledge.destroy
-        redirect_to user_path(pledge.user)
+        redirect_to user_pledges_path(pledge.user)
     end
 
     private

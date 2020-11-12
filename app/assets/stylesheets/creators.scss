@@ -219,7 +219,21 @@ footer.branding {
     min-width: 100px;
 }
 
-.button:hover {
+.small-button {
+    background-color: rgb(38,93,171);
+    border: none;
+    border-radius: 29px;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    max-width: 250px;
+    min-width: 100px;
+}
+
+.small-button:hover, .button:hover {
     background-color: rgb(18,71,146);
     transition: 0.5s;
 }

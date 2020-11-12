@@ -4,6 +4,8 @@
     <%= link_to "User Signup Here", new_user_path, class: "button" %>
 </div>
 
+<%= render 'errors' %>
+
 <%= form_with model: @creator, local: true do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, autocomplete: "name", required: true, class: "field-space" %><br>

@@ -1,0 +1,31 @@
+<h1 class="center">9 Most Expensive Tiers</h1>
+<h3 class="center">If You're feeling Spendy, here's where to go!</h3>
+
+<div class="display-box">
+    <% @tiers.each do |tier| %>
+        <div class="creator-box">
+            <div class="title-heading"><%= tier.title %></div>
+            <div><%= link_to tier.creator.name, creator_path(tier.creator), class: "small-button" %></div>
+            <strong class="field-space">$<%= tier.amount %> per month</strong>
+            <div class="field-space"><%= tier.description %></div>
+            <div class="bottom">
+            <% if !logged_in? %>
+                <%= link_to "Join", '/login', class: "button" %>
+            <% elsif current_user.class == Creator %>
+                <% if tier.creator == current_user %>
+                    <%= link_to "Edit Tier", edit_creator_tier_path(tier.creator, tier), class: "button" %> 
+                    <%= link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete, class: "button field-space" %>
+                <% end %>
+            <% elsif current_user.creators.include?(tier.creator) %>
+                <% if current_user.pledge_amount(tier.creator) < tier.amount %>
+                    <%= link_to "Join", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button" %>
+                <% else %>
+                    <div class="non-button"><%= "Subscribed"%></div>
+                <% end %>
+            <% else %>
+                <%= link_to "Join", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button" %>
+            <% end %>
+            </div>
+        </div>
+    <% end %>
+    </div>

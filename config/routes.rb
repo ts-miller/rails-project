@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update, :destroy, :edit, :show] do
-    resources :pledges, only: [:index, :edit, :show]
+    resources :pledges, only: [:index,]
   end
 
   resources :tiers, only: [:create, :update, :destroy]
@@ -19,4 +19,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'callbacks#google'
   get '/auth/failure', to: redirect('/')
+
+  get '/tiers/most_expensive_9', to: 'tiers#show'
+
 end

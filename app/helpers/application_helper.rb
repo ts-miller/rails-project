@@ -2,7 +2,7 @@ module ApplicationHelper
     
     def correct_user_path(user)
         if user.class == User
-            user_path(user)
+            user_pledges_path(user)
         elsif user.class == Creator
             creator_path(user)
         else
