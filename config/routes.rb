@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'home#index'
   
   resources :creators, only: [:new, :create, :update, :destroy, :edit, :show] do
     resources :tiers, only: [:new, :index, :edit]
