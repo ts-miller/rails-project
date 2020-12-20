@@ -30,7 +30,11 @@ class CreatorsController < ApplicationController
     def show
         @creator = Creator.find_by_id(params[:id])
         @tiers = @creator.tiers.order(:amount)
+<<<<<<< HEAD
         @pledges = @creator.pledges     
+=======
+        @pledges = @creator.pledges
+>>>>>>> 60dd98cd4b21fc024fe81c80e2dbb58226e91075
     end
 
     def edit

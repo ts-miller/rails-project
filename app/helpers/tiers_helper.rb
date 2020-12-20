@@ -10,14 +10,23 @@ module TiersHelper
             link_to "Join", '/login', class: "button"
         elsif current_user.class == Creator
             if @creator == current_user
+<<<<<<< HEAD
                 link_to("Edit Tier", edit_creator_tier_path(tier.creator, tier), class: "button") +
                 link_to("Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete, class: "button field-space")
+=======
+                link_to "Edit Tier", edit_creator_tier_path(tier.creator, tier), class: "button" 
+                link_to "Delete Tier", tier_path(tier), data: { :confirm => 'Are you sure?' }, method: :delete, class: "button field-space"
+>>>>>>> 60dd98cd4b21fc024fe81c80e2dbb58226e91075
             end
         elsif current_user.creators.include?(tier.creator)
             if current_user.pledge_amount(tier.creator) < tier.amount
                 link_to "Join", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button"
             else
+<<<<<<< HEAD
                 content_tag :div, "Subscribed", class: "non-button"
+=======
+                "Subscribed"
+>>>>>>> 60dd98cd4b21fc024fe81c80e2dbb58226e91075
             end
         else
             link_to "Join", new_creator_pledge_path(tier.creator, amount: tier.amount), class: "button"
