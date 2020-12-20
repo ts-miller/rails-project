@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'creators#index'
+  root 'welcome#index'
   
   resources :creators, only: [:new, :create, :update, :destroy, :edit, :show] do
     resources :tiers, only: [:new, :index, :edit]
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :update, :destroy, :edit, :show] do
-    resources :pledges, only: [:index,]
+    resources :pledges, only: [:index]
   end
 
   resources :tiers, only: [:create, :update, :destroy]
